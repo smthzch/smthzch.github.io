@@ -3153,11 +3153,6 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2023</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This post aims to provide an intuitive understanding of different bayesian inference techniques and the actual computations behind them. The focus is on the what and how and not on the why. Mathematical derivations for <em>why</em> a technique works are left for further research, instead I hope to demonstrate what each inference technique aims to accomplish and show how to accomplish this by implementing simple solutions with minimal tooling to make the mechanics visible and easily understood. I also hope to show how each technique relates to the other to help provide a unified picture of what we are trying to accomplish in bayesian inference.</p>
-<p>This notebook is composed of two main sections representing two common problems faced in bayesian inference.</p>
-<ol type="1">
-<li>Parameter inference (global parameters)</li>
-<li>Latent variable inference (local parameters)</li>
-</ol>
 <p>Suppose we have a random variable <span class="math inline">\(X\)</span> that is distributed</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -3228,7 +3223,7 @@ p(\mu|x) = \frac{p(x|\mu)p(\mu)}{\int_{\mu} p(x,\mu)d\mu} = \frac{p(x|\mu)p(\mu)
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="dv">0</span>]</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>estimates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -3293,8 +3288,8 @@ p(Accept) =  \frac{p(\mu_1|x)}{p(\mu_0|x)} = \frac{p(x|\mu_1)p(\mu_1|\mu_\mu,\si
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_accept(mu1, mu0):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculations done in log for numerical stability (prevent underflows)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    log_likelihood1 <span class="op">=</span> ss.norm(prior_mu, prior_sigma).logpdf(mu1) <span class="op">+</span> ss.norm(mu1, sigma).logpdf(x).<span class="bu">sum</span>()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    log_likelihood0 <span class="op">=</span> ss.norm(prior_mu, prior_sigma).logpdf(mu0) <span class="op">+</span> ss.norm(mu0, sigma).logpdf(x).<span class="bu">sum</span>()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    log_likelihood1 <span class="op">=</span> ss.norm.logpdf(mu1, prior_mu, prior_sigma) <span class="op">+</span> ss.norm.logpdf(x, mu1, sigma).<span class="bu">sum</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    log_likelihood0 <span class="op">=</span> ss.norm.logpdf(mu0, prior_mu, prior_sigma) <span class="op">+</span> ss.norm.logpdf(x, mu0, sigma).<span class="bu">sum</span>()</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(log_likelihood1 <span class="op">-</span> log_likelihood0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now that we have a proposal distribution and an acceptance rule we can run our MCMC algorithm.</p>
@@ -3334,7 +3329,7 @@ p(Accept) =  \frac{p(\mu_1|x)}{p(\mu_0|x)} = \frac{p(x|\mu_1)p(\mu_1|\mu_\mu,\si
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    ignore_index<span class="op">=</span><span class="va">True</span></span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>estimates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -3370,7 +3365,7 @@ p(Accept) =  \frac{p(\mu_1|x)}{p(\mu_0|x)} = \frac{p(x|\mu_1)p(\mu_1|\mu_\mu,\si
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.linspace(mu_mu_conj <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> mu_sigma_conj, mu_mu_conj <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> mu_sigma_conj, <span class="dv">300</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.hist(mus, bins<span class="op">=</span><span class="dv">30</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">&quot;mcmc&quot;</span>)<span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x1, ss.norm(mu_mu_conj, mu_sigma_conj).pdf(x1), label<span class="op">=</span><span class="st">&quot;conjugate&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x1, ss.norm.pdf(x1, mu_mu_conj, mu_sigma_conj), label<span class="op">=</span><span class="st">&quot;conjugate&quot;</span>)<span class="op">;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Posterior Distributions&quot;</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
