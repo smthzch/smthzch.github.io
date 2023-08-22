@@ -4,6 +4,8 @@
 
 ## Posts
 
+[Computational Bayes (py): Variational Inference](vi_py.html) - Exploring various Bayesian inference techniques and the algorithms behind them. Includes Variational inference (vi).
+
 [Computational Bayes (py): Conjugate Priors and MCMC](conjugate-mcmc_py.html) - Python version of the below post, exploring various Bayesian inference techniques and the algorithms behind them. Includes analytical conjugate priors and Markov chain monte carlo (mcmc). Variational inference (vi) to come.
 
 [Computational Bayes (R)](computational_bayes.html) - Exploring various Bayesian inference techniques and the algorithms behind them. Includes analytical conjugate priors, Markov chain monte carlo (mcmc), and variational inference (vi)
