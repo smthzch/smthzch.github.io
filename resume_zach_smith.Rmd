@@ -1,6 +1,13 @@
-# Resume 
+---
+title: "Zachary K. Smith"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  html_notebook: default
+---
 
- [As pdf](resume_zach_smith.pdf) 
+10391 Old Dayton Rd. New Lebanon OH 45345 | 740-405-4219 | ezke.smith@gmail.com
 
 ## Links
 

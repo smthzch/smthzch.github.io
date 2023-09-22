@@ -10,6 +10,4 @@
 
 [Computational Bayes (R)](posts/computational_bayes.html) - Exploring various Bayesian inference techniques and the algorithms behind them. Includes analytical conjugate priors, Markov chain monte carlo (mcmc), and variational inference (vi)
 
-## Resume
-
-[Resume](resume.md)
+## [Resume](resume.md)
