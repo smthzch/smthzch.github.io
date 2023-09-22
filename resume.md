@@ -29,7 +29,7 @@
 - Build deep learning and probabilistic models to predict forest carbon using satellite imagery
 - Process large scale geospatial vector and raster datasets
 - Create Bayesian Optimal Experimental Design package to target field data collection
-- Implement Multi GPU training on AWS clusters
+- Implement Multi GPU training on AWS
 
 **Data Scientist /  Research Engineer**
 
