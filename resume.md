@@ -13,8 +13,8 @@
 
 *Aclima* | Remote | January 2023 - Present
 
+- Develop and deploy gas leak localization models
 - Develop spatio-temporal models for air quality prediction using sparse GPs and deep learning
-- Develop and deploy latent variable model for region scoring ran daily
 - Refactor vehicle route planning code into modular package for ease of expansion/testing
 - Define and implement proper cross-validation scheme for flagship spatio-temporal model
 
