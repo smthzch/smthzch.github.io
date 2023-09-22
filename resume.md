@@ -1,6 +1,6 @@
 # Resume 
 
- [As pdf](resume_zach_smith.pdf) 
+ [> pdf](resume_zach_smith.pdf) 
 
 ## Links
 
