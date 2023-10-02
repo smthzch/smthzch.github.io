@@ -13,7 +13,7 @@
 
 # Experience
 
-**Data Scientist**
+**Senior Data Scientist**
 
 *Aclima* | Remote | January 2023 - Present
 
