@@ -1,3 +1,11 @@
+## Links
+
+- [EvoPolicy: fun alt-RL package](https://github.com/smthzch/evopolicy)
+- [Relative Space Case: embedded programming GPS/accelerometer](https://github.com/smthzch/relative-space-case)
+- [ABODER: Open sourced Bayesian Optimal Experimental Design package](https://github.com/ncx-co/aboder)
+- [Markov Madness: Deployed Cloud Run App *slow cold start*](https://march-madness-327pch26ba-uc.a.run.app)
+- [Resume](resume.md)
+
 ## Apps
 
 [March Madness](https://march-madness-327pch26ba-uc.a.run.app) - Docker Streamlit app hosted on Google Cloud Run
@@ -10,4 +18,3 @@
 
 [Computational Bayes (R)](posts/computational_bayes.html) - Exploring various Bayesian inference techniques and the algorithms behind them. Includes analytical conjugate priors, Markov chain monte carlo (mcmc), and variational inference (vi)
 
-## [Resume](resume.md)

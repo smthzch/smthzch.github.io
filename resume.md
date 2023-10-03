@@ -2,15 +2,6 @@
 
  [as pdf](resume_zach_smith.pdf) 
 
-## Links
-
-- [smthzch.github.io](https://smthzch.github.io)
-- [EvoPolicy: fun alt-RL package](https://github.com/smthzch/evopolicy)
-- [Relative Space Case: embedded programming GPS/accelerometer](https://github.com/smthzch/relative-space-case)
-- [ABODER: Open sourced Bayesian Optimal Experimental Design package](https://github.com/ncx-co/aboder)
-- [Markov Madness: Deployed Cloud Run App *slow cold start*](https://march-madness-327pch26ba-uc.a.run.app)
-
-
 # Experience
 
 **Senior Data Scientist**
@@ -28,7 +19,7 @@
 
 - Build deep learning and probabilistic models to predict forest carbon using satellite imagery
 - Process large scale geospatial vector and raster datasets
-- Create Bayesian Optimal Experimental Design package to target field data collection
+- Create Bayesian Optimal Experimental Design package to target field data collection: [ABODER](https://github.com/ncx-co/aboder)
 - Implement Multi GPU training on AWS
 
 **Data Scientist /  Research Engineer**
