@@ -101,3 +101,11 @@ on the Portable MinION Sequencer”. bioRxiv (2018)
 
 Z. Smith, B. Geier, W. Lyon “Microbial Community Identification and Analysis”.
 Poster Session at the Synthetic Biology for Defense Workshop, Arlington, VA. (2018)
+
+# Tools
+
+||||||
+|:--:|:---:|:---:|:---:|
+|Python |NumPyro  |Pytorch      |GCP|
+|R      |Stan     |Scikit-learn |AWS|
+|C      |SQL      |GPyTorch     |Databricks|
