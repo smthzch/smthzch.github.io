@@ -10,8 +10,8 @@
 
 - Build and deploy data pipelines in Python on Airflow-esque system
 - Develop and deploy gas leak localization models to aid utilities in region prioritization (numpyro)
-- Develop spatio-temporal models for air quality prediction using sparse GPs and deep learning (gpytorch)
-- Refactor vehicle route planning code into modular package for ease of expansion/testing
+- Develop spatio-temporal models for air quality prediction using GPyTorch
+- Refactor vehicle route planning code into modular python package for ease of expansion/testing
 - Define and implement proper cross-validation scheme for flagship spatio-temporal model to quantify model improvements
 
 **Data Scientist**
@@ -20,7 +20,7 @@
 
 - Build and deploy datapipelines in Python and R on MapReduce infrastructure
 - Build deep learning and probabilistic models to predict forest carbon using satellite imagery (pytorch)
-- Process large scale geospatial vector and raster datasets (python, stac, xarray)
+- Process large scale geospatial vector and raster datasets (python, stac, xarray, rasterio)
 - Create Bayesian Optimal Experimental Design package to target field data collection: [ABODER](https://github.com/ncx-co/aboder)
 - Implement Multi GPU training on AWS (pytorch-lightning)
 
