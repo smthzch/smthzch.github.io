@@ -23,6 +23,7 @@
 - Process large scale geospatial vector and raster datasets (python, stac, xarray, rasterio)
 - Create Bayesian Optimal Experimental Design package to target field data collection: [ABODER](https://github.com/ncx-co/aboder)
 - Implement Multi GPU training on AWS (pytorch-lightning)
+- Track and serve models using MLFlow and Databricks
 
 **Data Scientist /  Research Engineer**
 
