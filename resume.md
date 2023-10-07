@@ -19,7 +19,7 @@
 *NCX* | Remote | April 2021 - November 2022
 
 - Build and deploy datapipelines in Python and R on MapReduce infrastructure
-- Build deep learning and probabilistic models to predict forest carbon using satellite imagery (pytorch)
+- Build deep learning and probabilistic models to predict forest carbon using remote sensing data (pytorch)
 - Process large scale geospatial vector and raster datasets (python, stac, xarray, rasterio)
 - Create Bayesian Optimal Experimental Design package to target field data collection: [ABODER](https://github.com/ncx-co/aboder)
 - Implement Multi GPU training on AWS (pytorch-lightning)
