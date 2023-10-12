@@ -4,7 +4,8 @@
 
 # Experience
 
-**Senior Data Scientist**
+
+**Senior Machine Learning Engineer**
 
 *Aclima* | Remote | January 2023 - Present
 
