@@ -2,8 +2,6 @@
 
  [as pdf](resume_zach_smith.pdf) 
 
-10391 Old Dayton Rd. New Lebanon OH 45345 | 740-405-4219 | ezke.smith@gmail.com | [smthzch.github.io](https://smthzch.github.io)
-
 # Summary
 
 I am a data scientist/machine learning engineer with experience in end to end model development and deployment.
