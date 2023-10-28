@@ -2,14 +2,21 @@
 
  [as pdf](resume_zach_smith.pdf) 
 
-# Experience
+10391 Old Dayton Rd. New Lebanon OH 45345 | 740-405-4219 | ezke.smith@gmail.com | [smthzch.github.io](https://smthzch.github.io)
 
+# Summary
+
+I am a data scientist/machine learning engineer with experience in end to end model development and deployment.
+I primarily work in Python but have released and maintained projects developed in C#, C++, and Java.
+Problems solved include processing large amounts of data on cloud infrastrusture, deploying models on orchestration services, and optimizing data collection.
+I have experience working on a diverse set of data modeling problems including deep learning on remote sensing data, Bayesian models on air quality sensor data, and optimal sequential decision making.
+
+# Experience
 
 **Senior Machine Learning Engineer**
 
 *Aclima* | Remote | January 2023 - Present
 
-- Build and deploy data pipelines in Python on Airflow-esque system
 - Develop and deploy gas leak localization models to aid utilities in region prioritization (numpyro)
 - Develop spatio-temporal models for air quality prediction using GPyTorch
 - Refactor vehicle route planning code into modular python package for ease of expansion/testing
@@ -19,12 +26,10 @@
 
 *NCX* | Remote | April 2021 - November 2022
 
-- Build and deploy datapipelines in Python and R on MapReduce infrastructure
 - Build deep learning models to predict forest carbon using remote sensing data (pytorch)
 - Process large scale geospatial vector and raster datasets (python, stac, xarray, rasterio)
-- Create Bayesian Optimal Experimental Design package to target field data collection: [ABODER](https://github.com/ncx-co/aboder)
-- Implement Multi GPU training on AWS (pytorch-lightning)
-- Track and serve models using MLFlow and Databricks
+- Create Bayesian Optimal Experimental Design package to target field data collection used to direct and optimize $2M in data collection: [ABODER](https://github.com/ncx-co/aboder)
+- Write custom algorithms in C++ to speed up data processing 100x
 
 **Data Scientist /  Research Engineer**
 
@@ -62,13 +67,11 @@
 
 *California Polytechnic State University* | San Luis Obispo, California | June 2012
 
-# Tools
+# Skills
 
-||||||
-|:--:|:---:|:---:|:---:|
-|Python |NumPyro  |Pytorch      |GCP|
-|R      |Stan     |Scikit-learn |AWS|
-|C/C#   |SQL      |GPyTorch     |Databricks|
+- **Programming:** Python, R, C/C++, C#, SQL, bash
+- **ML Frameworks:** Scikit-Learn, PyTorch, GPyTorch, Stan, NumPyro
+- **Infrastructure:** Docker, GCP, AWS, Databricks
 
 ## Certificates
 
