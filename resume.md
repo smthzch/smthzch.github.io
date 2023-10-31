@@ -13,7 +13,11 @@ I have experience working on a diverse set of data modeling problems including d
 
 **Senior Machine Learning Engineer**
 
-*Aclima* | Remote | January 2023 - Present
+*Aclima* | Remote | October 2023 - Present
+
+**Data Scientist**
+
+January 2023 - September 2023
 
 - Develop and deploy gas leak localization models to aid utilities in region prioritization (numpyro)
 - Develop spatio-temporal models for air quality prediction using GPyTorch
