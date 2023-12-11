@@ -7,7 +7,9 @@
 
 ## Apps
 
-[Airplane Manufacturer Id](https://air-id-2ivit2kv6q-uc.a.run.app) - Docker Streamlit app hosted on Google Cloud Run *slow cold start*
+[Ship Segmentation](https://ship-seg-2ivit2kv6q-ul.a.run.app) - Docker Python Shiny app hosted on Google Cloud Run *slow cold start*
+
+[Airplane Manufacturer Id](https://air-id-2ivit2kv6q-uc.a.run.app) - Docker Python Shiny app hosted on Google Cloud Run *slow cold start*
 
 [March Madness Model](https://march-madness-327pch26ba-uc.a.run.app) - Docker Streamlit app hosted on Google Cloud Run *slow cold start*
 
