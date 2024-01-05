@@ -25,17 +25,12 @@ To execute advanced research involving machine learning, data science, and algor
 
 **Data Scientist - Research Engineer**
 
-*Aptima Inc.* | Fairborn, OH | November 2018 - April 2021
+*Aptima* | Fairborn, OH | November 2018 - April 2021
 
 
 **Associate Computational Biologist**
 
-*UES Inc.* | WPAFB, OH | June 2017 - November 2018
-
-
-**Hydrology Technician**
-
-*Miami Conservancy District* | Dayton, Ohio | October 2012 - June 2017
+*UES* | WPAFB, OH | June 2017 - November 2018
 
 
 # Education
