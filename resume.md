@@ -2,10 +2,6 @@
 
  [as pdf](resume_zach_smith.pdf) 
 
-# Mission
-
-To execute advanced research involving machine learning, data science, and algorithm development for Geospatial, Signal Processing, and Pattern Recognition problems.
-
 # Experience
 
 **Machine Learning Research Engineer**
