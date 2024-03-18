@@ -7,6 +7,8 @@
 
 ## Apps
 
+[On Watch Alert!](https://onwatchalert.com) - Web App for maintaining alertness while on watch. Features iris detection.
+
 [Ship Segmentation](https://ship-seg-2ivit2kv6q-ul.a.run.app) - Docker Python Shiny app hosted on Google Cloud Run *slow cold start*
 
 [Airplane Manufacturer Id](https://air-id-2ivit2kv6q-uc.a.run.app) - Docker Python Shiny app hosted on Google Cloud Run *slow cold start*
