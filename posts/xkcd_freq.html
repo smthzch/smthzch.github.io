@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.310">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>xkcd_freq</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="xkcd_freq_files/libs/clipboard/clipboard.min.js"></script>
+<script src="xkcd_freq_files/libs/quarto-html/quarto.js"></script>
+<script src="xkcd_freq_files/libs/quarto-html/popper.min.js"></script>
+<script src="xkcd_freq_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="xkcd_freq_files/libs/quarto-html/anchor.min.js"></script>
+<link href="xkcd_freq_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="xkcd_freq_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="xkcd_freq_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="xkcd_freq_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="xkcd_freq_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="xkcds-frequentist-straw-man" class="level1">
+<h1>XKCD’s Frequentist Straw Man</h1>
+<p>An often shared comic used to poke at the absurdity of frequentist methods and the superiority of Bayesian methods shows a lack of understanding of frequentist methods and statistics in general. The comic is humurous which is often enough to convice the uninformed that it must be true. The problem is it is completely uninformed of statistical practice. This comic has been addressed by other Statisticians, including <a href="https://statmodeling.stat.columbia.edu/2012/11/10/16808/">uber-Statistician Anrew Gelman</a>. But I didn’t find any of the rebuttals very compelling, I think they miss the actual reason why this is a bad setup.</p>
+<p><img src="frequentists_vs_bayesians.png" class="img-fluid"></p>
+<p>The comic shown above, presents a contrived machine which checks whether the sun has exploded and then rolls two dice. If two sixes are rolled, the machine will report the opposite of the sun’s true state, otherwise it will report the true state. The detector rolls the dice and reports that the sun has exploded. The bumbling frequentist amazed by the small probability of the detector rolling two sixes concludes that the sun must have actually exploded. The Bayesian being a reasonable person, concludes the machine rolled two sixes and the sun must still exist.</p>
+<p>Taken on its face this seems like damning behavior for the frequentist community. Who would possibly want to behave so foolishly bound by the methods of frequentists? The problem is no frequentist would ever act like this, and not because they are secretly Bayesians.</p>
+<p>The main issue is that frequentists do not perform statistical tests on the state of random variables. The second is that if these two gentlemen did in fact make a bet after performing inference as they would actually perform them, the frequentist would take the Bayesian’s lunch under all but a single set of priors. In this particular situation the frequentist would actually use Bayes rule to determine the conditional probability of the sun having exploded given the detector’s response, and it would be completely within the bounds of performing frequentist inference. Remember, using Bayes rule <a href="https://normaldeviate.wordpress.com/2012/11/17/what-is-bayesianfrequentist-inference/">does not mean you are a Bayesian</a>.</p>
+<section id="statistical-tests-unknown-parameters-conditional-probability" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-tests-unknown-parameters-conditional-probability">Statistical Tests, Unknown Parameters, Conditional Probability</h2>
+<p>The implied null hypothesis under test is that the sun has not exploded. What is interesting here is that the test is of the state of a random variable, not an unknown static parameter as is normally the case in null hypothesis significance testing (NHST). This is truly the rub here, XKCD has smuggled in a random variable to be tested, allowing him to ignore the conditional probability calculation that would be reasonably done by both frequentists and Bayesians.</p>
+<p>As described there are two random variables, the sun exploding on any given night variable, and the rolling of two dice variable. The unknown parameters here are the probabilities of the sun exploding on any given night, <span class="math inline">\(\theta_s\)</span>, and the probability of rolling two sixes, <span class="math inline">\(\theta_d\)</span>. By making the state of the sun the hypothesis under test, XKCD is able to ignore the unknown <span class="math inline">\(\theta_s\)</span> parameter for the frequentist, while it would feature prominently in the Bayesian calculation - if done correctly and not in some deranged caricature of the methods.</p>
+<p>As setup by XKCD the p-value is derived from the conditional probability of observing the detector reporting: “exploded”, given that the sun has not exploded <span class="math inline">\(P(\text{"exploded"}|S=\text{🌞})=\frac{1}{36}\)</span>. However, we cannot look at this probability and conclude the the sun has exploded. You cannot assume a random variable takes on a particular value without taking into account the proability of it taking that value. This is not Bayesian, this is basic conditional probability.</p>
+<p>This is very important, the state of the sun is not an unknown static parameter. It is itself a random variable with an unknown probability of occurence. The inference needs to be on the probability of occurence, not on its value on any particular day. So why does XKCD decide the frequentist would perform NHST on a random variable? To make fools of frequentists of course.</p>
+<p>We can perform NHST on an assumed value for a static unknown parameter because there is no probability of it being one value or another. There is no possibility of it changing so we don’t need to take this into account.</p>
+<p>Let us see how a frequentist would actually approach this problem, by estimating the unknown parameters then using them with Baye’s rule to determine the conditional probability.</p>
+</section>
+<section id="frequentist-solution" class="level2">
+<h2 class="anchored" data-anchor-id="frequentist-solution">Frequentist Solution</h2>
+<p>The first step is we need to estimate the probability of the sun exploding on any given night. Given that the earth is 4000 years old and we have observed the sun not explode on every single night we have <span class="math inline">\(\theta_s = \frac{4000 * 365}{4000 * 365} = 100\%\)</span> probability of the sun not exploding. The wiley Bayesian of course would need to use some principled Beta prior for <span class="math inline">\(\theta_s\)</span>, then being unable to simplify the conjugate posterior due to MCMC brain rot, bust out Stan to sample from the posterior and ah crap forgot to set <code>&lt;lower=0, upper=1&gt;</code> ok now we can….</p>
+<p>While we wait for the Bayesian to summarize their csv of posterior draws lets continue on in our inference. What we will all have here is estimated parameters, <span class="math inline">\(\theta_s\)</span> and <span class="math inline">\(\theta_d\)</span>, and we want to calculate the probability of the sun being exploded given the observation of the detector saying it did.</p>
+<p>Our observation space is <code>{"exploded", "not exploded"}</code> reported from the detector/robot, as well as two latent random variables, the state of the sun and the dice.</p>
+<p>We have the following probabilities:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; S \coloneqq \text{sun}, D \coloneqq \text{dice}, R \coloneqq \text{robot} \\
+\\
+&amp; P(S=\text{💥}) = 0, P(S=\text{🌞}) = 1 \\
+&amp; P(D=\text{⚅⚅}) = \frac{1}{36}, P(D=\text{!⚅⚅}) = \frac{35}{36} \\
+\\
+&amp; P(R=\text{"exploded"}|S=\text{🌞}) = P(D=\text{⚅⚅}) = \frac{1}{36} \\
+&amp; P(R=\text{"exploded"}|S=\text{💥}) = P(D=\text{!⚅⚅}) = \frac{35}{36} \\
+&amp; P(R=\text{"exploded"}) = P(S=\text{🌞})P(R=\text{"exploded"}|S=\text{🌞}) + P(S=\text{💥})P(R=\text{"exploded"}|S=\text{💥}) \\
+&amp; = 1 * \frac{1}{36} + 0 * \frac{35}{36} = \frac{1}{36} \\
+&amp;
+\end{aligned}
+\]</span></p>
+<p>Given these probabilities we can then use Baye’s rule to calculate <span class="math inline">\(P(S=\text{💥}|R=\text{"exploded"})\)</span>. Doing so does not make one a Bayesian, what distinguishes Bayesians from frequentist here is how the above probabilities were calculated, not what we do with them once they are calculated.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; P(S=\text{💥}|R=\text{"exploded"}) = \frac{P(R=\text{"exploded"}|S=\text{💥})P(S=\text{💥})}{P(R=\text{"exploded"})} \\
+&amp; = \frac{\frac{35}{36}*0}{\frac{1}{36}} = 0
+\end{aligned}
+\]</span></p>
+<p>Given the frequentist inference we have a <span class="math inline">\(0\%\)</span> probability of the sun having exploded given our observation of the detector. The irony here is that any odds offered by the Bayesian - unless they used a 100% prior on not exploded - will be advantageous to the frequentist. It is easy to see this if we replaced our 0/1 probabilities with probabilities derived with Laplace’s <a href="https://en.wikipedia.org/wiki/Rule_of_succession">rule of succession</a>, which was actually originally proposed as a solution to estimating the probability of the sun rising the next day. This is sort of a Bayesian-lite method. Now our probabilities will be very near 0/1, but not quite equal. Either way, the frequentist and Bayesian will get very similar results and should be utterly confused by whatever XKCD decided to do.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The problem is assuming a random variable takes on a certain value, without taking into consideration the probabilities of the random variable when constructing the null and alternative hypothesis. This is why we use Bayes rule, because we are dealing with random variables and not static unknown parameters. By attempting to run NHST on a random variable XKCD has tried to show that a frequentist would ignore the base rate of occurence of the now static random variable in the null hypothesis. The problem is that a frequentist would not do that, no one would. If anything all this shows is that people don’t really understand statistical practice, and rather than try to understand it they pick a side and then use whatever garbage reasoning they can to make the other side look bad.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

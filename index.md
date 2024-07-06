@@ -17,6 +17,8 @@
 
 ## Posts
 
+[XKCD's Frequentist Straw Man](posts/xkcd_freq.html) - An analysis of the errors in XKCD's Frequentist vs. Bayesian comic.
+
 [Computational Bayes (py): Variational Inference](posts/vi_py.html) - Exploring various Bayesian inference techniques and the algorithms behind them. Includes Variational inference (vi).
 
 [Computational Bayes (py): Conjugate Priors and MCMC](posts/conjugate-mcmc_py.html) - Python version of the below post, exploring various Bayesian inference techniques and the algorithms behind them. Includes analytical conjugate priors and Markov chain monte carlo (mcmc). Variational inference (vi) to come.
