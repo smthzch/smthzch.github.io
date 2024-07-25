@@ -3,7 +3,6 @@
 - [EvoPolicy: fun alt-RL package](https://github.com/smthzch/evopolicy)
 - [ABODER: Open sourced Bayesian Optimal Experimental Design package](https://github.com/ncx-co/aboder)
 - [Relative Space Case: embedded programming GPS/accelerometer](https://github.com/smthzch/relative-space-case)
-- [Resume](resume.md)
 
 ## Apps
 
